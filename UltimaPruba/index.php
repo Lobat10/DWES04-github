@@ -83,4 +83,25 @@ for($i=0;$i<=sizeof($jugadores)+1;$i++){
         echo "</br>";
     }
 }
+
+var_dump($jugadores);
+echo "</br>";
+echo "</br>";
+echo print_r($jugadores);
+
+    echo "<ol>";
+    foreach($jugadores as $actual){
+        echo "<li> $actual </li>";
+    }
+    echo "</ol>";
+    
+$nombres=array("Salas"=>"Diego","Garces"=>"Eduardo","Lobato"=>"Adrian");
+$nombres["Molina"]="Pablo";
+print_r($nombres);
+echo "</br>";
+
+foreach ($nombres as $apellido => $nombre){
+    echo "<h3>El apellido de $nombre es $apellido </h3>";
+}
+
 ?>
