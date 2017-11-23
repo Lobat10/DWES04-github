@@ -6,16 +6,16 @@
 <body>
 <?php
 if(isset($_POST["enviar"])) {
-	setcookie("visitante", $_POST["nombre"], time() + (86400 * 15), "/U2P06_Cookies/Cookies"); // 86400 = segundos en 1 día
+	setcookie("visitante", $_POST["nombre"], time() +  15, "/U2P06_Cookies/"); // 86400 = segundos en 1 día
 	header("Location: ".$_SERVER['PHP_SELF']);
 }
 
-setcookie("test", "test", time() + 3600, '/');
+setcookie("test", "test", time() + 3600, "/U2P06_Cookies/");
 if(count($_COOKIE) ==0)
     echo "<h3>Advertencia: tu navegador tiene las cookies deshabilitadas. Esta aplicación no funcionará</h3>";
 
 if (isset($_REQUEST["eliminarCookie"])){
-    setcookie("visitante",true, time()-1, "/U2P06_Cookies/Cookies");
+    setcookie("visitante",true, time()-1, "/U2P06_Cookies/");
     
 }
 if(isset($_COOKIE["visitante"])) {
