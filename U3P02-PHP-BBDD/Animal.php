@@ -33,9 +33,6 @@ class Animal {
                 <p>Nombre:". $this->getNombre()."</p>
                 <p>Tipo:". $this->getTipo()." </p>
                 <p>Imagen:<img src='img/".$this->getImagen()."'></p>";
-    }
-    
+    }   
 }
-
-
 ?>
