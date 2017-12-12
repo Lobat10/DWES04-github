@@ -6,9 +6,13 @@
 <body>
 <h2>Pruebas con la base de datos de catalogo</h2>
 <?php
+
+$login=$_SESSION['login'];
+if($login!=1) header('Location:./login/login.php');
+
 $servidor = "localhost";
-$usuario = "alumno";
-$clave = "alumno";
+$usuario = "alumno_rw";
+$clave = "dwes";
 include "Obra.php";
 session_name('autor');
 session_start();
