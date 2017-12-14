@@ -2,12 +2,29 @@
 include('connectionAdmin.php');
 $mensajeError='';
 $mensaje='';
-/** POST */
-$user=(isset($_POST['user']) ?  $_POST['user']:'');
-$pass=(isset($_POST['pass']) ?  $_POST['pass']:'');
-$nombre=(isset($_POST['nombre']) ?  $_POST['nombre']:'');
-$descripcion=(isset($_POST['descripcion']) ?  $_POST['descripcion']:'');
-$tipoCuenta=(isset($_POST['tipo']) ?  $_POST['tipo']:'');
+
+$user='';
+$pass='';
+$nombre='';
+$descripcion='';
+$tipoCuenta='';
+
+if(isset($_POST['user'])){
+    $user=$_POST['user'];
+}
+if(isset($_POST['pass'])){
+    $pass=$_POST['pass'];
+}
+if(isset($_POST['nombre'])){
+    $nombre=$_POST['nombre'];
+}
+if(isset($_POST['descripcion'])){
+    $descripcion=$_POST['descripcion'];
+}
+if(isset($_POST['tipo'])){
+    $tipoCuenta=$_POST['tipo'];
+}
+
 if(isset($_POST['enviar'])){
     if($user==''){
         $mensajeError="El nombre de usuario no se ha introducido";

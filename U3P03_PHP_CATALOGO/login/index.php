@@ -2,10 +2,24 @@
 include "connection.php";
 $mensajeError='';
 session_start();
-$login=(isset($_SESSION['login']) ? $_SESSION['login']:'');
-$user=(isset($_SESSION['usuario']) ? $_SESSION['usuario']:'');
-$admin=(isset($_SESSION['admin']) ? $_SESSION['admin']:'');
+
+$user='';
+$admin='';
+
+if(isset($_SESSION['login'])){
+    $login=$_SESSION['login'];
+}else{
+    $login=0;   
+}
+if(isset($_SESSION['usuario'])){
+    $user=$_SESSION['usuario'];
+}
+if(isset($_SESSION['admin'])){
+    $admin=$_SESSION['admin'];
+}
+
 if($login!=1) header('Location:login.php');
+
 $resultado= $conexion->query('SELECT * from usuario WHERE login="'.$user.'"');
 if($resultado->num_rows==0) header('Location:logout.php');
 ?>
@@ -24,7 +38,9 @@ if($resultado->num_rows==0) header('Location:logout.php');
        echo "<p>Login:".$usuario['login']."</p>";
        $admin=$usuario['admin']; $_SESSION['admin']=$usuario['admin'];
 }
+
 ?>
+
 <a href="../mostrarCatalogo.php">Catalogo: registros.</a><br>
 <a href="logout.php">Cerrar Sesion</a><br>
 <a href="baja.php">Eliminar cuenta</a><br>

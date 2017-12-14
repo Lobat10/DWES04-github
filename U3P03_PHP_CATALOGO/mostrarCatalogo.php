@@ -6,30 +6,23 @@
 <body>
 <h2>Pruebas con la base de datos de catalogo</h2>
 <?php
-
+session_start();
 $login=$_SESSION['login'];
+
 if($login!=1) header('Location:./login/login.php');
 
 $servidor = "localhost";
 $usuario = "alumno_rw";
 $clave = "dwes";
 include "Obra.php";
-session_name('autor');
-session_start();
+
+
 
 $conexion = new mysqli($servidor,$usuario,$clave,"catalogo");
 $conexion->query("SET NAMES 'UTF8'");
 
 if (isset($_GET["cerrarSesion"])) {
-    session_unset();
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"],
-            $params["secure"], $params["httponly"]
-            );
-    }
-    session_destroy();
+    $_SESSION['cod']='';
 }
 
 if ($conexion->connect_errno) {
@@ -56,8 +49,10 @@ if (isset($_GET['codigoAutor'])){
 
 <table style='border:0'>
 <tr style='background-color:red'>
-<?php if(isset($_SESSION['cod'])){
-		$varSesion=$_SESSION['cod'];
+<?php 
+if( $_SESSION['cod']!=''){
+
+    $varSesion=$_SESSION['cod'];
 	?>
 	<th>Codigo obra<a href='mostrarCatalogo.php?order=1&codigoAutor=<?php echo $varSesion ?>'>&#9650;</a><a href='mostrarCatalogo.php?order=2&codigoAutor=<?php echo $varSesion ?>'> &#9660;</a></th>
 	<?php }else{?>
@@ -92,36 +87,6 @@ if (isset($_POST['vobra'])) {
 }else{
 
 }
-
-/*
- * 
- * AUTOR BUSQUEDA SIN ACABAR
- * 
-$where2="";
-if (isset($_POST['vautor'])) {
-    if (!empty($_POST['vautor'])){
-        $palabra=explode(" ",$_POST['vautor']);
-        $cont=0;
-        $encontrado=false;
-        while(!$encontrado && sizeof($palabra)>$cont){
-            $where2=" && nombreAutor LIKE '%".$palabra[$cont]."%'";
-            $resultado2 = $conexion -> query("SELECT nombreAutor,foto FROM autor where codigoAutor=".$obra->getCodigoAutor()."".$where2);
-            if ($resultado->num_rows!=0){
-                $encontrado=true;
-            }else{
-                $cont+=1;
-                
-            }
-        }
-    }else{
-        echo "<p>No puede estar vacio el campo </p>";
-        $where2="";
-    }
-}else{
-    $where2="";    
-}
-*/
-
 $resultado = $conexion -> query("SELECT * FROM obra".$where."".$order);
 
 

@@ -1,11 +1,15 @@
 <?php
 include('connectionAdmin.php');
 $mensajeError='';
-/**POST*/
-$pass=(isset($_POST['pass'])? $_POST['pass']:'');
-/**SESSION*/
+
+$pass='';
+if(isset($_POST['pass'])){
+    $pass=$_POST['pass'];
+}
+
 session_start();
 $user=$_SESSION['usuario'];
+
 if(isset($_POST['enviar'])){
     if($pass==''){
         $mensajeError="Debe introducir la contraseña";

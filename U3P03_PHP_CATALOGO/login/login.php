@@ -1,9 +1,21 @@
 <?php
 include('connection.php');
 session_start();
-$user=(isset($_POST['user']) ?  $_POST['user']:'');
-$pass=(isset($_POST['pass']) ?  $_POST['pass']:'');
-$login=(isset($_SESSION['login']) ? $_SESSION['login']:0);
+
+$user='';
+$pass='';
+$login=0;
+
+if(isset($_POST['user'])){
+    $user=$_POST['user'];
+}
+if(isset($_POST['pass'])){
+    $pass=$_POST['pass'];  
+}
+if(isset($_SESSION['login'])){
+    $login=$_SESSION['login'];
+}
+
 if($login==1) header('Location:index.php');
 $mensajeError='';
 if(isset($_POST['enviar'])){
@@ -29,16 +41,14 @@ if(isset($_POST['enviar'])){
 <html>
 <head>
     <title>Login</title>
-    
-
 </head>
 <body>
-<div class="container">
-<form class="form-signin"action="login.php" method="POST">
-    <h1 class="form-signin-heading">Login</h1>
-    <label class="sr-only">User:</label><input class="form-control" id="inputEmail" type="text" name="user">
-    <label class="sr-only">Password:</label><input class="form-control" id="inputPassword" type="password" name="pass">
-    <input class="btn btn-lg btn-primary btn-block"type="submit" name="enviar" value="Entrar">
+<div >
+<form action="login.php" method="POST">
+    <h1>Login</h1>
+    <p>User:</p><input type="text" name="user">
+    <p>Password:</p><input type="password" name="pass">
+    <input type="submit" name="enviar" value="Entrar">
 </form>
 <p><?php if($mensajeError!='')echo $mensajeError;?></p>
 </div>
