@@ -24,14 +24,19 @@ while(!feof($archivo)) {
     echo fgets($archivo) . "<br/>";
 }
 fclose($archivo);
+
+
+$archivo = fopen($rutaArchivo, "a") or die("Imposible  abrir el archivo para escritura");
+fwrite($archivo,"Programación\n");
+fwrite($archivo,"Entornos de desarrollo\n");
 */
-$archivo = fopen($rutaArchivo, "r") or die("Imposible abrir el archivo");
+$archivo = fopen($rutaArchivo, "r") or die("Imposible  abrir el archivo para escritura");
 while(!feof($archivo)) {
     $c = fgetc($archivo);
     if (($c == "\n") or ($c == "\r\n")) echo "<br/>";
     else echo $c;
 }
-fclose($archivo);
 
+fclose($archivo);
 ?>
 </body></html>
