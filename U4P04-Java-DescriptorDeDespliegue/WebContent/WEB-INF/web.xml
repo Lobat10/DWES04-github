@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>U4P04-Java-DescriptorDeDespliegue</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>indice.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>servletDeEjemploWeb1Http</servlet-name>
+    <servlet-class>servlets.EjemploServletHttp</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletDeEjemploWeb1Http</servlet-name>
+    <url-pattern>/EjemploServletHttp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>servletDeEjemploWeb2</servlet-name>
+    <servlet-class>servlets.EjemploServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletDeEjemploWeb2</servlet-name>
+    <url-pattern>/EjemploServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>servletDeEjemploWeb3Generico</servlet-name>
+    <servlet-class>servlets.EjemploServletGenerico</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletDeEjemploWeb3Generico</servlet-name>
+    <url-pattern>/EjemploServletGenerico</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ShowDate</servlet-name>
+    <servlet-class>servlets.ShowDate</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowDate</servlet-name>
+    <url-pattern>/ShowDate</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>RandomNumber</servlet-name>
+    <servlet-class>servlets.RandomNumber</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RandomNumber</servlet-name>
+    <url-pattern>/RandomNumber</url-pattern>
+  </servlet-mapping>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errores/error404.html</location>
+  </error-page>
+</web-app>
