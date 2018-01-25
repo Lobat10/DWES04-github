@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.catalina.deploy.ContextTransaction;
 
 /**
@@ -30,10 +29,11 @@ public class GenerarNumeroServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		double num=Math.random()*100+1;
+		int num=(int)(Math.random()*100+1);
 		request.setAttribute("numero", num);
 		ServletContext contexto = getServletContext();
 
+		
 		/*
 		PrintWriter out = response.getWriter();
 		out.println("<h1>Numero aleatoria de 1 al 100: "+num+"</h1>");
@@ -41,7 +41,7 @@ public class GenerarNumeroServlet extends HttpServlet {
 		
 		out.close();
 		*/
-		RequestDispatcher rd = request.getRequestDispatcher("/MostrarNumero");
+		RequestDispatcher rd = request.getRequestDispatcher("/GenerarColores");
 		rd.forward(request, response);
 		/*
 		response.sendRedirect(contexto.getContextPath()+"/MostrarNumero");

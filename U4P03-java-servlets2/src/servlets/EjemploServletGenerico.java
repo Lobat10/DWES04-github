@@ -14,7 +14,7 @@ public class EjemploServletGenerico extends GenericServlet {
 
 	public void service(ServletRequest req, ServletResponse res) throws IOException {
 		log("Petición recibida desde " + req.getRemoteAddr());
-		res.setContentType("text/html");
+		res.setContentType("text/html;UTF-8");
 		res.getWriter().println("Mensaje desde el servlet genérico de ejemplo");
 		res.getWriter().println("<p><a href='./index.html'>Index</a></p>");
 		res.getWriter().close();
