@@ -6,14 +6,17 @@
 <body>
 	<h1>INDEX</h1>
 	<form id="formulario" action="/U4P07_Java_DatosPersonales/ValidarFormulario" method="post">
-		<h3>Nombre: </h3> 
+		<h3>*Nombre: </h3> 
 		<input type="text" name="nombre">
+		
+		<h3>*Numero límite: </h3> 
+		<input type="number" name="numero">
+		
+		<h3>*Color: </h3> 
+		<input type="color" name="color" value="#ff0000">
 		
 		<h3>Password: minimo(1 numero, 1 caracter especial('*','-','+','?','¿','!','¡'), 1 mayuscula) </h3> 
 		<input type="password" name="pass">
-		
-		<h3>Numero favorito: </h3> 
-		<input type="number" name="numero">
 		
 		<h3>Fecha Nacimiento: </h3> 
 		<input type="date" name="fecha">

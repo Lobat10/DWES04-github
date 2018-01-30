@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 /**
  * Servlet implementation class ProcesarDatosServlet
@@ -37,7 +36,8 @@ public class ProcesarDatosServlet extends HttpServlet {
 		response.setContentType("text/html;UTF-8");
 
 		PrintWriter out = response.getWriter();
-		
+		int number = (int) request.getAttribute("numeroAleatorio");
+		out.println("<h1 style='color:"+request.getParameter("color")+"'>" + number + "</h1>");
 		out.println("<ul>");
 		Enumeration<String> parametros= request.getParameterNames();
 		while(parametros.hasMoreElements()) {
