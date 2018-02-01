@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta charset='UTF-8'/>
+</head>
+
+<body>
+	<h1>INDEX</h1>
+	<form id="formulario" action="/U4P08_Java_Figuras/CrearFigura" method="post">
+		<h3>LadoX: </h3> 
+		<input type="number" name="ladox">
+
+		<h3>LadoY: </h3> 
+		<input type="number" name="ladoy">
+
+		<h3>RadioX: </h3> 
+		<input type="number" name="radiox">
+
+		<h3>RadioY: </h3> 
+		<input type="number" name="radioy">
+		
+		<h3>Color:</h3> 
+		<select name="colores" form="formulario">
+  			<option value="aqua">aqua</option>
+		  	<option value="azure">azure</option>
+  			<option value="bisque">bisque</option>
+  			<option value="coral">coral</option>
+  			<option value="gold">gold</option>
+		</select>
+		
+		<h3>Borde: </h3> 
+		Si.<input type="radio" name="borde" value="si" checked></br>
+		No.<input type="radio" name="borde" value="no"></br>		
+		<input type="submit" name="enviar">
+	</form>
+	
+	
+</body>
+</html>
