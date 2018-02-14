@@ -40,9 +40,11 @@ public class WrapFilter implements Filter {
 		System.out.println("Aplicando filtro de envoltorio");
 		ServletContext contexto=request.getServletContext();
 		
-		response.setContentType("text/html;UTF-8");
+
 
 		PrintWriter out = response.getWriter();
+		
+		response.setContentType("text/html;UTF-8");
 		out.println("<html><head><meta charset='UTF-8'/><title> Visitas: "+contexto.getAttribute("contador")+"</title></head><body>");
 		
 		chain.doFilter(request, response);

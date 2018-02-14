@@ -31,7 +31,7 @@ public class FechaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;UTF-8");
+		//response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<h1>Servlet sencillo que muestra la fecha actual</h1>");
 		Date fecha = new Date();
