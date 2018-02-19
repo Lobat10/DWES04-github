@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MostrarAnimalesServlet
+ * Servlet implementation class MostrarCatalogoServlet
  */
-@WebServlet("/MostrarAnimales")
-public class MostrarAnimalesServlet extends HttpServlet {
+@WebServlet("/MostrarCatalogo")
+public class MostrarCatalogoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MostrarAnimalesServlet() {
+	public MostrarCatalogoServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -57,27 +57,23 @@ public class MostrarAnimalesServlet extends HttpServlet {
 			sentencia = conn.createStatement();
 
 			// Paso 4: Ejecutar la sentencia SQL a través de los objetos Statement
-			String consulta = "SELECT * from animal";
+			String consulta = "SELECT * FROM obra, autor WHERE obra.codigoAutor=autor.codigoAutor";
 			ResultSet rset = sentencia.executeQuery(consulta);
 
 			// Paso 5: Mostrar resultados
-			
-			if (!rset.isBeforeFirst() ) {    
-			    out.println("<h3>No hay resultados</p>");
+
+			if (!rset.isBeforeFirst()) {
+				out.println("<h3>No hay resultados</p>");
 			}
 			out.println("<table>");
-			out.println("<tr style='background-color: red'>");
-			out.println("<th>Número chip </th>");
-			out.println("<th>Nombre </th>");
-			out.println("<th>Especie</th>");
-			out.println("<th>Foto</th>");
+			out.println("<tr style='background-color: lightgreen'>");
+			out.println("<th>Nombre obra</th>");
+			out.println("<th>Nombre autor</th>");
 			out.println("</tr>");
 			while (rset.next()) {
 				out.println("<tr style='background-color: lightblue'>");
-				out.println("<td>" + rset.getString("chip") +"</td>");
-				out.println("<td>" + rset.getString("nombre") + "</td>");
-				out.println("<td>" + rset.getString("especie") + "</td>");
-				out.println("<td><img src='img/" + rset.getString("imagen") +"'></td>");
+				out.println("<td>" + rset.getString("nombreAutor") + "</td>");
+				out.println("<td>" + rset.getString("nombreObra") + "</td>");
 				out.println("</tr>");
 			}
 			out.println("</table>");

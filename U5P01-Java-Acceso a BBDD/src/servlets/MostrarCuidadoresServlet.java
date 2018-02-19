@@ -35,6 +35,7 @@ public class MostrarCuidadoresServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ServletContext contexto = getServletContext();
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><meta charset='UTF-8'/></head><body>");
@@ -92,6 +93,7 @@ public class MostrarCuidadoresServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		out.println("<a href='./index.html'>Inicio</a>");
 
 		out.println("</body></html>");
 		
