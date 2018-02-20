@@ -5,16 +5,15 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>usuario</param-name>
-  	<param-value>alumno_rw</param-value>
+    <param-name>usuario</param-name>
+    <param-value>alumno_rw</param-value>
   </context-param>
   <context-param>
-  	<param-name>password</param-name>
-  	<param-value>dwes</param-value>
+    <param-name>password</param-name>
+    <param-value>dwes</param-value>
   </context-param>
   <context-param>
-	<param-name>url</param-name>
-  	<param-value>jdbc:mariadb://localhost/catalogo</param-value>
+    <param-name>url</param-name>
+    <param-value>jdbc:mariadb://localhost/catalogo</param-value>
   </context-param>
-  
 </web-app>
