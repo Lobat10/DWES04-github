@@ -38,8 +38,11 @@ public class MostrarCuidadoresServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/></head><body>");
-
+		out.println(
+				"<html><head><meta charset='UTF-8'/><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>"
+						+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+						+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"
+						+ "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script></head><body>");
 		Connection conn = null;
 		Statement sentencia = null;
 		try {
@@ -69,13 +72,13 @@ public class MostrarCuidadoresServlet extends HttpServlet {
 			if (!rset.isBeforeFirst()) {
 				out.println("<h3>No hay resultados</p>");
 			}
-			out.println("<table>");
-			out.println("<tr style='background-color: red'>");
+			out.println("<table class='table table-dark'>");
+			out.println("<tr>");
 			out.println("<th>Id Cuidador</th>");
 			out.println("<th>Nombre</th>");
 			out.println("</tr>");
 			while (rset.next()) {
-				out.println("<tr style='background-color: lightblue'>");
+				out.println("<tr>");
 				out.println("<td>" + rset.getString("idCuidador") + "</td>");
 				out.println("<td><a href='./MostrarCuidador?idCuidador="+rset.getString("idCuidador")+"'>" + rset.getString("nombre") +"</a> </td>");
 				out.println("</tr>");

@@ -20,24 +20,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ModificarAnimalServlet")
 public class ModificarAnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ModificarAnimalServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ModificarAnimalServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ServletContext contexto = getServletContext();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/></head><body>");
+		out.println(
+				"<html><head><meta charset='UTF-8'/><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>"
+						+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+						+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"
+						+ "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></head><body>");
 
 		Connection conn = null;
 		Statement sentencia = null;
@@ -58,31 +64,24 @@ public class ModificarAnimalServlet extends HttpServlet {
 			String consultaUpdate = "UPDATE animal SET especie='jabali' WHERE nombre='Babe'";
 			try {
 				int nFilas = sentencia.executeUpdate(consultaUpdate);
-			  out.println("<p>"+ nFilas + " filas afectadas</p>");
-			} catch(Exception e) {
-			  out.println("<p>No se pudo actualizar la base de datos</p>");
+				out.println("<p>" + nFilas + " filas afectadas</p>");
+			} catch (Exception e) {
+				out.println("<p>No se pudo actualizar la base de datos</p>");
 			}
 			// Paso 5: Mostrar resultados
-			
-		
+
 			/*
-			out.println("<table>");
-			out.println("<tr style='background-color: red'>");
-			out.println("<th>Número chip </th>");
-			out.println("<th>Nombre </th>");
-			out.println("<th>Especie</th>");
-			out.println("<th>Foto</th>");
-			out.println("</tr>");
-			while (rset.next()) {
-				out.println("<tr style='background-color: blue'>");
-				out.println("<td>" + rset.getString("chip") +"</td>");
-				out.println("<td>" + rset.getString("nombre") + "</td>");
-				out.println("<td>" + rset.getString("especie") + "</td>");
-				out.println("<td><img src='img/" + rset.getString("imagen") +"'></td>");
-				out.println("</tr>");
-			}
-			out.println("</table>");
-			*/
+			 * out.println("<table>"); out.println("<tr style='background-color: red'>");
+			 * out.println("<th>Número chip </th>"); out.println("<th>Nombre </th>");
+			 * out.println("<th>Especie</th>"); out.println("<th>Foto</th>");
+			 * out.println("</tr>"); while (rset.next()) {
+			 * out.println("<tr style='background-color: blue'>"); out.println("<td>" +
+			 * rset.getString("chip") +"</td>"); out.println("<td>" +
+			 * rset.getString("nombre") + "</td>"); out.println("<td>" +
+			 * rset.getString("especie") + "</td>"); out.println("<td><img src='img/" +
+			 * rset.getString("imagen") +"'></td>"); out.println("</tr>"); }
+			 * out.println("</table>");
+			 */
 			// Paso 6: Desconexión
 			if (sentencia != null)
 				sentencia.close();
@@ -96,9 +95,11 @@ public class ModificarAnimalServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

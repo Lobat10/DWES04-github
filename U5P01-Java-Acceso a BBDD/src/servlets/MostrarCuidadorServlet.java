@@ -39,7 +39,11 @@ public class MostrarCuidadorServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset='UTF-8'/></head><body>");
+		out.println(
+				"<html><head><meta charset='UTF-8'/><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>"
+						+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+						+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>"
+						+ "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script></head><body>");
 
 		String where = "";
 		if (request.getParameter("idCuidador") == null) {
@@ -72,27 +76,29 @@ public class MostrarCuidadorServlet extends HttpServlet {
 				if (!rset.isBeforeFirst()) {
 					out.println("<h3>No hay resultados</p>");
 				}
-				out.println("<table>");
-				out.println("<tr style='background-color: red'>");
+				out.println("<table class='table table-dark'>");
+				out.println("<tr>");
 				out.println("<th>Id Cuidador</th>");
 				out.println("<th>Nombre</th>");
 				out.println("<th>Animales a su cargo</th>");
 				out.println("</tr>");
 				while (rset.next()) {
-					out.println("<tr style='background-color: lightblue'>");
+					out.println("<tr>");
 					out.println("<td>" + rset.getString("idCuidador") + "</td>");
-					out.println("<td>"+ rset.getString("nombre") + "</td>");
+					out.println("<td>" + rset.getString("nombre") + "</td>");
 					out.println("<td>");
-					String idCuidador=request.getParameter("idCuidador");
-					String consultaAnimales = "SELECT animal.* FROM animal, cuida WHERE (animal.chip = cuida.chipAnimal) AND (cuida.idCuidador = '"+idCuidador+"')";
+					String idCuidador = request.getParameter("idCuidador");
+					String consultaAnimales = "SELECT animal.* FROM animal, cuida WHERE (animal.chip = cuida.chipAnimal) AND (cuida.idCuidador = '"
+							+ idCuidador + "')";
 					rset = sentencia.executeQuery(consultaAnimales);
-					if (!rset.isBeforeFirst() ) {    
-					  out.println("<p>Este cuidador no cuida ningún animal</p>");
+					if (!rset.isBeforeFirst()) {
+						out.println("<p>Este cuidador no cuida ningún animal</p>");
 					}
 					out.println("<ul>");
 
 					while (rset.next()) {
-					  out.println("<li>" + rset.getString("nombre") + ", de la especie " + rset.getString("especie") + "</li>");
+						out.println("<li>" + rset.getString("nombre") + ", de la especie " + rset.getString("especie")
+								+ "</li>");
 					}
 					out.println("</ul>");
 					out.println("</td>");
